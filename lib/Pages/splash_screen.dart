@@ -1,4 +1,4 @@
-import 'package:chatbotapp/Pages/home_page.dart';
+import 'package:chatbotapp/Pages/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -25,8 +25,10 @@ class SplashScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ChatScreen()));
               },
               child: Container(
                 height: 50,
