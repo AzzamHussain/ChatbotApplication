@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         ),
         ...AppPages.routes, // Use the routes from AppPages
       ],
+      debugShowCheckedModeBanner: false,
     );
   }
 }
