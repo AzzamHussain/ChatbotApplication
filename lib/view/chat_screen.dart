@@ -15,37 +15,48 @@ class ChatScreen extends StatelessWidget {
           title: Text(
             'Your Bot',
             style: TextStyle(
-              fontSize: 20, 
-              fontWeight: FontWeight.bold, 
-              color: Colors.white
-            ),
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           backgroundColor: Color.fromARGB(255, 22, 201, 126),
-          
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0), // Add padding if needed
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(
+                    20.0), // Adjust radius for circular shape
+                child: Image.asset(
+                  'assets/profile.png', // Replace with your image URL or AssetImage
+                  width: 30.0, // Adjust size as needed
+                  height: 30.0, // Adjust size as needed
+                  fit: BoxFit
+                      .cover, // Ensures the image covers the circular area
+                ),
+              ),
+            ),
+          ],
         ),
-        
         resizeToAvoidBottomInset: true,
         body: ListView.builder(
-          controller: cont.chatScrollController,
-          itemCount: cont.chats.length,
-          itemBuilder: (context, index) {
-            return ChatBubble(
-              isMyChat: cont.chats[index].isMyChat,
-              chatData: cont.chats[index],
-            );
-          }
-        ),
+            controller: cont.chatScrollController,
+            itemCount: cont.chats.length,
+            itemBuilder: (context, index) {
+              return ChatBubble(
+                isMyChat: cont.chats[index].isMyChat,
+                chatData: cont.chats[index],
+              );
+            }),
         bottomNavigationBar: Padding(
           padding: MediaQuery.of(context).viewInsets,
           child: Material(
             color: Colors.white,
             child: TextFormField(
-              
               controller: cont.chatFieldController,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
               decoration: InputDecoration(
                 hintText: "Enter Message Here...",
-                
                 suffixIcon: InkWell(
                   onTap: () {
                     cont.postChatMessage();
@@ -55,18 +66,26 @@ class ChatScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                 border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.0), // Adjust the radius here
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.0), // Adjust the radius here
-      borderSide: BorderSide(color: Colors.blue, width: 2.0), // Customize the border side if needed
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.0), // Adjust the radius here
-      borderSide: BorderSide(color: Colors.grey, width: 1.0), // Customize the border side if needed
-    ),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                border: OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.circular(12.0), // Adjust the radius here
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.circular(12.0), // Adjust the radius here
+                  borderSide: BorderSide(
+                      color: Colors.green,
+                      width: 2.0), // Customize the border side if needed
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.circular(12.0), // Adjust the radius here
+                  borderSide: BorderSide(
+                      color: Colors.grey,
+                      width: 1.0), // Customize the border side if needed
+                ),
               ),
             ),
           ),
