@@ -36,8 +36,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   http: ^1.2.1
-  dash_chat_2: ^0.0.21
-  chat_gpt_sdk: ^3.0.9
+  get: ^4.6.6
+  google_generative_ai: ^0.4.3
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
