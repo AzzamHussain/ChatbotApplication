@@ -26,9 +26,7 @@ class ChatController extends GetxController {
         chatContent: chatMessage, isMyChat: true, chatTime: DateTime.now()));
     update();
     chatFieldController.clear();
-    final model = GenerativeModel(
-        model: 'gemini-1.5-flash',
-        apiKey: 'AIzaSyBeXHAJDCeLfqBI1x_t0GpT90tYapWH6vE');
+    final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: '');
     final content = [Content.text('${chatMessage}')];
     final response = await model.generateContent(content);
     if (response != null) {
