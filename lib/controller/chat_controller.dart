@@ -6,19 +6,15 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 class ChatController extends GetxController {
   List<ChatModel> chats = [];
   TextEditingController chatFieldController = TextEditingController();
-  addChat(ChatModel chatData) {
-    chats.add(chatData);
-    chats.add(ChatModel(
-        chatContent: chatFieldController.text,
-        isMyChat: false,
-        chatTime: DateTime.now()));
-    chatFieldController.clear();
-    update();
-  }
 
   ScrollController chatScrollController = ScrollController();
 
   int? value;
+
+  addChat(ChatModel chatData) {
+    chats.add(chatData);
+    update();
+  }
 
   postChatMessage() async {
     String chatMessage = chatFieldController.text;
@@ -32,12 +28,11 @@ class ChatController extends GetxController {
     final content = [Content.text('${chatMessage}')];
     final response = await model.generateContent(content);
     if (response != null) {
-      chatFieldController.clear();
       chats.add(ChatModel(
           chatContent: response.text!,
           isMyChat: false,
           chatTime: DateTime.now()));
+      update();
     }
-    update();
   }
 }

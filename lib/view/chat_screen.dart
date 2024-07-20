@@ -11,16 +11,15 @@ class ChatScreen extends StatelessWidget {
     return GetBuilder<ChatController>(builder: (cont) {
       return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(80.0),
           child: AppBar(
             automaticallyImplyLeading: false,
             title: Text(
               'Your Bot',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                height: 13,
               ),
             ),
             backgroundColor: Color.fromARGB(255, 37, 177, 135),
@@ -32,8 +31,8 @@ class ChatScreen extends StatelessWidget {
                       20.0), // Adjust radius for circular shape
                   child: Image.asset(
                     'assets/profile.png', // Replace with your image URL or AssetImage
-                    width: 50.0, // Adjust size as needed
-                    height: 50.0, // Adjust size as needed
+                    width: 35.0, // Adjust size as needed
+                    height: 35.0, // Adjust size as needed
                     fit: BoxFit
                         .cover, // Ensures the image covers the circular area
                   ),

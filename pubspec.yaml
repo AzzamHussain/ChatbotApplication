@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.6
   google_generative_ai: ^0.4.3
   animated_text_kit: ^4.2.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
