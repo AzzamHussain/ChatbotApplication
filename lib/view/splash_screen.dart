@@ -1,50 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 5), () {
+      Get.toNamed(
+          '/chatScreen'); // Navigate to chatScreen using GetX after 3 seconds
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Container(
-        width: size.width,
-        height: size.height,
-        color: Colors.white70,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset('assets/195.png'),
-              const SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.toNamed(
-                      '/chatScreen'); // Navigate to chatScreen using GetX
-                },
-                child: Container(
-                  height: 50,
-                  width: size.width * 0.7,
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 22, 201, 126),
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Get started',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white, // Replace with your desired color code
+            ),
           ),
-        ),
+          Container(
+            width: size.width,
+            height: size.height,
+            color: Colors.white70,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset('assets/195.png'),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'Lets have a Communication', // Optional: Replace with your desired splash screen text
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 37, 177, 135),
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

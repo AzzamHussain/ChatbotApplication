@@ -10,30 +10,37 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ChatController>(builder: (cont) {
       return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(
-            'Your Bot',
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          backgroundColor: Color.fromARGB(255, 22, 201, 126),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0), // Add padding if needed
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(
-                    20.0), // Adjust radius for circular shape
-                child: Image.asset(
-                  'assets/profile.png', // Replace with your image URL or AssetImage
-                  width: 30.0, // Adjust size as needed
-                  height: 30.0, // Adjust size as needed
-                  fit: BoxFit
-                      .cover, // Ensures the image covers the circular area
-                ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            title: Text(
+              'Your Bot',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                height: 13,
               ),
             ),
-          ],
+            backgroundColor: Color.fromARGB(255, 37, 177, 135),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(8.0), // Add padding if needed
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                      20.0), // Adjust radius for circular shape
+                  child: Image.asset(
+                    'assets/profile.png', // Replace with your image URL or AssetImage
+                    width: 50.0, // Adjust size as needed
+                    height: 50.0, // Adjust size as needed
+                    fit: BoxFit
+                        .cover, // Ensures the image covers the circular area
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         resizeToAvoidBottomInset: true,
         body: ListView.builder(
@@ -63,7 +70,7 @@ class ChatScreen extends StatelessWidget {
                   },
                   child: Icon(
                     Icons.send,
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 37, 177, 135),
                   ),
                 ),
                 contentPadding:
@@ -76,7 +83,7 @@ class ChatScreen extends StatelessWidget {
                   borderRadius:
                       BorderRadius.circular(12.0), // Adjust the radius here
                   borderSide: BorderSide(
-                      color: Colors.green,
+                      color: Color.fromARGB(255, 37, 177, 135),
                       width: 2.0), // Customize the border side if needed
                 ),
                 enabledBorder: OutlineInputBorder(

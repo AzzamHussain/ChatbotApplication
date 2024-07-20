@@ -36,8 +36,10 @@ class ChatBubble extends StatelessWidget {
                       : const Radius.circular(10),
                   bottomLeft: const Radius.circular(10),
                   bottomRight: const Radius.circular(10)),
-              color:
-                  isMyChat ? const Color(0xffEFF4FF) : const Color(0xffF3F3F3)),
+              color: isMyChat
+                  ? Color.fromARGB(255, 37, 177, 135)
+                  : Color.fromARGB(
+                      255, 37, 177, 135)), //Color(0xffEFF4FF),Color(0xffF3F3F3)
           child: isMyChat == true
               ? Text(
                   chatData.chatContent,
