@@ -30,10 +30,9 @@ class ChatController extends GetxController {
     update();
     chatFieldController.clear();
     final model = GenerativeModel(
-       //api with apikey comes here
+        //api with apikey comes here
         model: 'gemini-1.5-flash',
-        apiKey: 
-       );
+        apiKey: );
     final content = [Content.text('${chatMessage}')];
     final response = await model.generateContent(content);
     if (response != null) {

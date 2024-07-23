@@ -1,5 +1,6 @@
 import 'package:chatbotapp/components/chat_bubble.dart';
 import 'package:chatbotapp/controller/chat_controller.dart';
+import 'package:chatbotapp/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,8 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find<ThemeController>();
+
     return GetBuilder<ChatController>(builder: (cont) {
       return Scaffold(
         appBar: PreferredSize(
@@ -70,7 +73,9 @@ class ChatScreen extends StatelessWidget {
                 onTap: () {
                   // Handle Settings tap
                   print('Settings tapped');
-                  Navigator.pop(context); // Close the drawer
+                  Navigator.pop(context);
+                  _showSettings(context, themeController);
+                  // Close the drawer
                 },
               ),
               ListTile(
@@ -143,5 +148,37 @@ class ChatScreen extends StatelessWidget {
         ),
       );
     });
+  }
+
+  // Function to show settings dialog with theme toggle
+  void _showSettings(BuildContext context, ThemeController themeController) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Settings'),
+          content: Row(
+            children: [
+              Text('Dark Mode'),
+              Obx(() => Switch(
+                    value: themeController.isDarkMode.value,
+                    onChanged: (value) {
+                      themeController.toggleTheme(); // Toggle the theme
+                      Navigator.of(context).pop(); // Close the dialog
+                    },
+                  )),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
