@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.white, // Replace with your desired color code
+              color: Colors.white,
             ),
           ),
           Container(
@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 30,
                   ),
                   const Text(
-                    'Lets have a Communication', // Optional: Replace with your desired splash screen text
+                    'Lets have a Communication',
                     style: TextStyle(
                         color: Color.fromARGB(255, 37, 177, 135),
                         fontSize: 22,

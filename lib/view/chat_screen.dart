@@ -24,33 +24,78 @@ class ChatScreen extends StatelessWidget {
             ),
             backgroundColor: Color.fromARGB(255, 37, 177, 135),
             actions: [
-              Padding(
-                padding: const EdgeInsets.all(8.0), // Add padding if needed
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(
-                      20.0), // Adjust radius for circular shape
-                  child: Image.asset(
-                    'assets/profile.png', // Replace with your image URL or AssetImage
-                    width: 35.0, // Adjust size as needed
-                    height: 35.0, // Adjust size as needed
-                    fit: BoxFit
-                        .cover, // Ensures the image covers the circular area
+              Builder(
+                builder: (context) => // Create a new context using Builder
+                    IconButton(
+                  icon: Icon(Icons.menu), // Use built-in menu icon
+                  color: Colors.white, // Icon color
+                  onPressed: () {
+                    // Open the end drawer
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+        endDrawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 37, 177, 135),
+                ),
+                child: Text(
+                  'Menu',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+                onTap: () {
+                  // Handle Home tap
+                  print('Home tapped');
+                  Navigator.pop(context); // Close the drawer
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+                onTap: () {
+                  // Handle Settings tap
+                  print('Settings tapped');
+                  Navigator.pop(context); // Close the drawer
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.info),
+                title: Text('About'),
+                onTap: () {
+                  // Handle About tap
+                  print('About tapped');
+                  Navigator.pop(context); // Close the drawer
+                },
               ),
             ],
           ),
         ),
         resizeToAvoidBottomInset: true,
         body: ListView.builder(
-            controller: cont.chatScrollController,
-            itemCount: cont.chats.length,
-            itemBuilder: (context, index) {
-              return ChatBubble(
-                isMyChat: cont.chats[index].isMyChat,
-                chatData: cont.chats[index],
-              );
-            }),
+          controller: cont.chatScrollController,
+          itemCount: cont.chats.length,
+          itemBuilder: (context, index) {
+            return ChatBubble(
+              isMyChat: cont.chats[index].isMyChat,
+              chatData: cont.chats[index],
+            );
+          },
+        ),
         bottomNavigationBar: Padding(
           padding: MediaQuery.of(context).viewInsets,
           child: Material(

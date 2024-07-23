@@ -3,7 +3,7 @@ import 'package:chatbotapp/controller/chat_controller.dart';
 import 'package:chatbotapp/models/chat_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart'; // Add this import for date formatting
+import 'package:intl/intl.dart';
 
 class ChatBubble extends StatelessWidget {
   ChatBubble({super.key, this.isMyChat = false, required this.chatData});
@@ -14,8 +14,7 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String formattedTime =
-        DateFormat('hh:mm a').format(chatData.chatTime); // Format the time
+    String formattedTime = DateFormat('hh:mm a').format(chatData.chatTime);
 
     return Column(
       crossAxisAlignment:
@@ -25,6 +24,19 @@ class ChatBubble extends StatelessWidget {
           mainAxisAlignment:
               isMyChat ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
+            if (!isMyChat)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+                    chatData.profilePicture,
+                    width: 40.0,
+                    height: 40.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             Container(
               padding: const EdgeInsets.all(8),
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
@@ -78,6 +90,19 @@ class ChatBubble extends StatelessWidget {
                               ),
                             ]),
             ),
+            if (isMyChat)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+                    chatData.profilePicture,
+                    width: 40.0,
+                    height: 40.0,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
           ],
         ),
         Padding(

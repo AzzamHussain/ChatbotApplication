@@ -11,6 +11,9 @@ class ChatController extends GetxController {
 
   int? value;
 
+  final String myProfilePicture = 'assets/profile.png'; // Add this
+  final String botProfilePicture = 'assets/195.png'; // Add this
+
   addChat(ChatModel chatData) {
     chats.add(chatData);
     update();
@@ -19,19 +22,27 @@ class ChatController extends GetxController {
   postChatMessage() async {
     String chatMessage = chatFieldController.text;
     chats.add(ChatModel(
-        chatContent: chatMessage, isMyChat: true, chatTime: DateTime.now()));
+        chatContent: chatMessage,
+        isMyChat: true,
+        chatTime: DateTime.now(),
+        profilePicture: myProfilePicture,
+        isChatAnimated: false)); // Add profilePicture here
     update();
     chatFieldController.clear();
     final model = GenerativeModel(
+       //api with apikey comes here
         model: 'gemini-1.5-flash',
-        apiKey: 'AIzaSyBmwTBtgFsNIpneQeVx90MZkquNZJpGFpQ');
+        apiKey: 
+       );
     final content = [Content.text('${chatMessage}')];
     final response = await model.generateContent(content);
     if (response != null) {
       chats.add(ChatModel(
           chatContent: response.text!,
           isMyChat: false,
-          chatTime: DateTime.now()));
+          chatTime: DateTime.now(),
+          profilePicture: botProfilePicture,
+          isChatAnimated: false)); // Add profilePicture here
       update();
     }
   }
