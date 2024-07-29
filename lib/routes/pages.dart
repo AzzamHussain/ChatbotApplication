@@ -7,6 +7,7 @@ class AppPages {
 
   static final routes = [
     GetPage(
-        name: '/chatScreen', page: () => ChatScreen(), binding: ChatBinding())
+        name: '/chatScreen', page: () => ChatScreen(), binding: ChatBinding()),
+       
   ];
 }
