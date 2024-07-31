@@ -16,19 +16,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => GetMaterialApp(
-      title: 'Chatbot App',
-      theme: lightTheme, // Use the light theme
-      darkTheme: darkTheme, // Use the dark theme
-      themeMode: themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
-      initialRoute: '/',
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => const SplashScreen(),
-        ),
-        ...AppPages.routes, // Use the routes from AppPages
-      ],
-      debugShowCheckedModeBanner: false,
-    ));
+          title: 'Chatbot App',
+          theme: lightTheme, // Use the light theme
+          darkTheme: darkTheme, // Use the dark theme
+          themeMode: themeController.isDarkMode.value
+              ? ThemeMode.dark
+              : ThemeMode.light,
+          initialRoute: '/',
+          getPages: [
+            GetPage(
+              name: '/',
+              page: () => const SplashScreen(),
+            ),
+            ...AppPages.routes, // Use the routes from AppPages
+          ],
+          debugShowCheckedModeBanner: false,
+        ));
   }
 }
